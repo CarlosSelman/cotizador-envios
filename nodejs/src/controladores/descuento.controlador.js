@@ -60,6 +60,13 @@ function obtenerDescuento(req, res) {
     })
 }
 
+function obtenerDescuentosT(req,res){
+    descuentoModelo.find((err,descuentosEncontrados)=>{
+        if(err) return res.status(404).send({report: 'Error al encontrar las regiones'});
+            return res.status(200).send(descuentosEncontrados);
+    })
+}
+
 function editarDescuento(req, res) {
     var idDescuento = req.params.idDescuento;
     var params = req.body;
@@ -88,5 +95,6 @@ module.exports = {
     crearDescuento,
     obtenerDescuento,
     editarDescuento,
-    eliminarDescuento 
+    eliminarDescuento,
+    obtenerDescuentosT 
 }

@@ -7,7 +7,6 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { RegionesComponent } from './componentes/regiones/regiones.component';
 import { PaisesComponent } from './componentes/paises/paises.component';
 import { CotizadorComponent } from './componentes/cotizador/cotizador.component';
-import { RutasComponent } from './componentes/rutas/rutas.component';
 
 // Angular...
 import { NgModule } from '@angular/core';
@@ -34,6 +33,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { DescuentosComponent } from './componentes/descuentos/descuentos.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +42,8 @@ import { FooterComponent } from './componentes/footer/footer.component';
     RegionesComponent,
     PaisesComponent,
     CotizadorComponent,
-    RutasComponent,
     FooterComponent,
+    DescuentosComponent,
   ],
   imports: [
     CommonModule,
