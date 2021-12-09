@@ -6,6 +6,7 @@ const RegionControlador = require("../controladores/region.controlador");
 
 // RUTES
 var api = express.Router();
+    api.get('/obtenerRegionesT', RegionControlador.obtenerRegionesT);
     api.get('/obtenerRegiones', RegionControlador.obtenerRegiones);
     api.post('/crearRegion',  RegionControlador.crearRegion);
     api.get('/obtenerRegion/:idRegion', RegionControlador.obtenerRegion);

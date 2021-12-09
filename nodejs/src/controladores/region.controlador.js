@@ -13,6 +13,13 @@ function obtenerRegiones(req,res){
     })
 }
 
+function obtenerRegionesT(req,res){
+    regionModelo.find((err,regionesEncontradas)=>{
+        if(err) return res.status(404).send({report: 'Error al encontrar las regiones'});
+            return res.status(200).send(regionesEncontradas);
+    })
+}
+
 function crearRegion(req,res){
     var regionModelo = new Region();
     var params = req.body;
@@ -89,5 +96,6 @@ module.exports = {
     crearRegion,
     obtenerRegion,
     editarRegion,
-    eliminarRegion 
+    eliminarRegion,
+    obtenerRegionesT
 }
