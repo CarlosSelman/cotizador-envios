@@ -42,4 +42,5 @@ export class RegionesService {
   eliminarRegion(id:String): Observable<any>{
     return this._http.delete(this.url + '/eliminarRegion/' + id, {headers: this.headersVariable})
   }
+
 }

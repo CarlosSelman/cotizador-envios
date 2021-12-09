@@ -161,6 +161,15 @@ export class RegionesComponent implements AfterViewInit {
     }
   }
 
+  eliminarRegion(idRegion){
+    this._regionService.eliminarRegion(idRegion).subscribe(
+      response=>{
+        console.log(response);
+        this.refresh();
+      }
+    )
+  }
+
   refresh(): void{
     window.location.reload();
   }
