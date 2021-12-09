@@ -7,7 +7,7 @@ const Region = require("../modelos/region.modelo");
 
 function obtenerPaises(req,res){
 
-    paisMoselo.find().populate('idRegion', 'nombre').exec((err, paisesEncontrados)=>{
+    paisModelo.find().populate('idRegion', 'nombre').exec((err, paisesEncontrados)=>{
         console.log(err);
         if(err) return res.status(500).send({ mensaje: 'Error en la peticion de paises' });
         if(!paisesEncontrados) return res.status(500).send({ mensaje: 'Error al obtener los paises' });
@@ -15,11 +15,19 @@ function obtenerPaises(req,res){
     })
 }
 
+function obtenerPaisesT(req,res){
+    paisModelo.find((err,paisesEncontrados)=>{
+        if(err) return res.status(404).send({report: 'Error al encontrar los paises'});
+            return res.status(200).send(paisesEncontrados);
+    })
+}
+
+
 function crearPais(req,res){
     var paisModelo = new Pais();
     var params = req.body;
 
-    if (params.nombre && params.region) {
+    if (params.nombre) {
         paisModelo.nombre = params.nombre;
         paisModelo.idRegion = params.idRegion;
         paisModelo.tarifa = params.tarifa
@@ -100,5 +108,6 @@ module.exports = {
     obtenerPais,
     editarPais,
     eliminarPais,
-    obtenerPaisesRegion
+    obtenerPaisesRegion,
+    obtenerPaisesT
 }
