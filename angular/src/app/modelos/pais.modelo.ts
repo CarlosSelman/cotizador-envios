@@ -5,6 +5,6 @@ export class Pais{
       public idRegion: {
         nombre: String;
       },
-      public tarifa: Number
+      public tarifa: number
     ){}
   }

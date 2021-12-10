@@ -27,6 +27,10 @@ export class PaisesService {
     return this._http.post(this.url + '/crearPais/', params,{headers: this.headersVariable})
   }
 
+  obtenerPaisesRegion(id:String):Observable<any>{
+    return this._http.get(this.url + '/obtenerPaisesRegion/' + id, {headers:  this.headersVariable})
+  }
+
   obtenerPaises(): Observable<any>{
     return this._http.get(this.url + '/obtenerPaises', {headers: this.headersVariable});
   }

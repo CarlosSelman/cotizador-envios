@@ -26,21 +26,29 @@
 
 <div class="container">
         <br>
-        
-
+        <!-- 
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="txtNombre" placeholder="Nombre" required>
-                <span class="input-group-text"><i class="bi bi-justify"></i></span>
-                <input type="text" class="form-control" name="txtApellido" placeholder="Apellido" required >
+                <input type="text" class="form-control" placeholder="Alto" required>
+                <span class="input-group-text"><i class="bi bi-rulers"></i></span>
+                <input type="text" class="form-control" name="txtApellido" placeholder="Ancho" required >
+            </div>
+        -->
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-rulers"></i></span>
+                <input type="number" class="form-control" name="alto" #alto="ngModel" [(ngModel)]="cotizado.alto" placeholder="Alto"  autofocus required>
+                <input type="number" class="form-control" name="largo" #largo="ngModel" [(ngModel)]="cotizado.largo"  placeholder="Largo"  autofocus required>
+                <input type="number" class="form-control" name="ancho" #ancho="ngModel" [(ngModel)]="cotizado.ancho" placeholder="Ancho"  autofocus required>
+                <span class="input-group-text">cms.</span>
             </div>
 
             <div class="input-group mb-3">
-                <span class="input-group-text">Edad</span>
-                <input type="number" class="form-control" name="txtEdad" placeholder="Edad"  autofocus required>
-                <span class="input-group-text"><i class="bi bi-calendar2-minus"></i></span>
+                <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
+                <input type="number" class="form-control" name="peso" #peso="ngModel" [(ngModel)]="cotizado.peso" placeholder="Peso"  autofocus required>
+                <span class="input-group-text">lbs.</span>
             </div>
 
-            <div class="input-group mb-3">
+           <!-- 
+                <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-gender-female"></i><i class="bi bi-gender-male"></i></span>
                 <input type="text" class="form-control" name="txtGenero" placeholder="Género"  autofocus required>
             </div>
@@ -54,24 +62,29 @@
                 <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
                 <input type="text" class="form-control" name="txtTel" placeholder="No. Telefónico" autofocus required>
             </div>
+           -->
+           
+           
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">Q</span>
-                <input type="number" class="form-control" name="txtSalario" placeholder="Salario ~ ejemplo: ####" autofocus required>
-                <span class="input-group-text"><i class="bi bi-cash-stack"></i></span>
-            </div>
+            <div class="mb-3">
+                <label class="form-label"><strong>Escoja el País:</strong></label>
+                  <select  name="idPais" #idPais="ngModel"
+                  [(ngModel)]="idPaisModel" class="form-select" aria-label="Default select example">
+                    <option *ngFor="let reg of paises" [ngValue]="reg">{{reg.nombre}}</option>
+                  </select>
+              </div>
 
             <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-geo-fill"></i> Dirección:</span>
-                <input class="form-control" name="txtDireccion" placeholder="Dirección"  autofocus required>
+                <span class="input-group-text">Q</span>
+                <input type="number" class="form-control" name="total" #total="ngModel" [(ngModel)]="cotizado.total" placeholder="Total sin descuento"  autofocus disabled>
             </div>
         
             <div class="d-grid">
                 <hr>
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-primary">Validar</button>
-                    <button type="button" class="btn btn-primary">Cotizar</button>
-                    <button type="button" class="btn btn-primary">Limpiar</button>
+                    <button type="button" class="btn btn-primary" (click)="cotizar()">Cotizar</button>
+                    <button type="button" class="btn btn-primary" (click)="limpiar()">Limpiar</button>
                 </div>
             </div>
         
