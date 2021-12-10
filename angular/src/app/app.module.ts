@@ -34,6 +34,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { DescuentosComponent } from './componentes/descuentos/descuentos.component';
+import { CotizadorRegionesComponent } from './componentes/cotizador-regiones/cotizador-regiones.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { DescuentosComponent } from './componentes/descuentos/descuentos.compone
     CotizadorComponent,
     FooterComponent,
     DescuentosComponent,
+    CotizadorRegionesComponent,
   ],
   imports: [
     CommonModule,
