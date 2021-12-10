@@ -1,1 +1,55 @@
-<p>cotizador-regiones works!</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GO-COTIZADOR-REGIONES</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+</head>
+<body>
+   <!-- Sección de la explicación de Usuarios -->
+ <div style=" border-radius: 0;"class="card text-center">
+    <div style="
+      background: #000428;
+      background: -webkit-linear-gradient(to right, #004e92, #000428);
+      background: linear-gradient(to right, #004e92, #000428);" 
+    class="card-body">
+      <h5 style="color:white"class="card-title">Cotizador</h5>
+      <p style="color:white" class="card-text">Seleccione una región para poder cotizar el envío a un país.</p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="container">
+ 
+    <div class="row">
+      <div class="col-xs-12 col-sm-6" *ngFor="let tpsl of regionesModelGet; let i = index">
+        <div class="card border-dark mb-5">
+          <div class="card-header border-dark">
+            <div align="right"class="dropdown">
+               <button  class="btn btn-light btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" disabled></button>  
+            </div>
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote blockquote-custom bg-white px-3 pt-4">
+              <div style="background: #000428;
+                background: -webkit-linear-gradient(to right, #004e92, #000428);
+                background: linear-gradient(to right, #004e92, #000428);"
+                class="blockquote-custom-icon shadow-1-strong">
+                <i style="color: white;"class="bi bi-diagram-2-fill"></i>
+              </div>
+              <h5 class="card-title">{{tpsl.nombre}}</h5>
+              <p class="mb-0 mt-2 font-italic">
+                {{tpsl.descripcion}}
+              </p>
+              <br>
+              <a class="card-link"  [routerLink]="['/cotizador', tpsl._id]">Ir a cotizar...</a>
+            </blockquote>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

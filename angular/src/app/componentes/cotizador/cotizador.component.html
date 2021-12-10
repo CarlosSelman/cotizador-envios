@@ -1,1 +1,81 @@
-<p>cotizador works!</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GO-COTIZADOR</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+</head>
+<body>
+   <!-- Sección de la explicación de Usuarios -->
+ <div style=" border-radius: 0;"class="card text-center">
+    <div style="
+      background: #000428;
+      background: -webkit-linear-gradient(to right, #004e92, #000428);
+      background: linear-gradient(to right, #004e92, #000428);" 
+    class="card-body">
+      <h5 style="color:white"class="card-title">Cotizador</h5>
+      <p style="color:white" class="card-text">Ingrese la información que se le solicita a continuación para poder cotizar.</p>
+    </div>
+  </div>
+<!-- Peso Alto Ancho destino tarifa cupon -->
+<!--
+    (peso*tarifa)+1.66*alto*largo*ancho-descuento*0.5*peso  
+-->
+<br>
+
+<div class="container">
+        <br>
+        
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="txtNombre" placeholder="Nombre" required>
+                <span class="input-group-text"><i class="bi bi-justify"></i></span>
+                <input type="text" class="form-control" name="txtApellido" placeholder="Apellido" required >
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Edad</span>
+                <input type="number" class="form-control" name="txtEdad" placeholder="Edad"  autofocus required>
+                <span class="input-group-text"><i class="bi bi-calendar2-minus"></i></span>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-gender-female"></i><i class="bi bi-gender-male"></i></span>
+                <input type="text" class="form-control" name="txtGenero" placeholder="Género"  autofocus required>
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="email" class="form-control" name="txtMail" placeholder="E-Mail" autofocus required>
+                <span class="input-group-text" id="basic-addon2"><i class="bi bi-envelope-check-fill"></i></span>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                <input type="text" class="form-control" name="txtTel" placeholder="No. Telefónico" autofocus required>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Q</span>
+                <input type="number" class="form-control" name="txtSalario" placeholder="Salario ~ ejemplo: ####" autofocus required>
+                <span class="input-group-text"><i class="bi bi-cash-stack"></i></span>
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-geo-fill"></i> Dirección:</span>
+                <input class="form-control" name="txtDireccion" placeholder="Dirección"  autofocus required>
+            </div>
+        
+            <div class="d-grid">
+                <hr>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary">Validar</button>
+                    <button type="button" class="btn btn-primary">Cotizar</button>
+                    <button type="button" class="btn btn-primary">Limpiar</button>
+                </div>
+            </div>
+        
+        <br>
+</div>
+</body>
+</html>

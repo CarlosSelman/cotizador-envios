@@ -1,0 +1,85 @@
+
+  .pointer{
+    cursor: pointer;
+  }
+  
+  .container{
+    margin-top: 5px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+  }
+  
+  .ancho{
+    width: 80%;
+  }
+  
+  @media(max-width: 736px){
+    .login-form .main{
+      flex-direction: column;
+  }
+  .login-form form{
+      margin-top: 30px;
+      margin-bottom: 10px;
+  }
+  .form-img{
+      border-radius: 0;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-top-right-radius: 0;
+      order: 2;
+  }
+  .content{
+      order: 1;
+      border-radius: 0;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+  }
+  
+    .container{
+        border-radius: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        flex-direction: column;
+    }
+  }
+  
+   input:focus{
+    background: transparent;
+    border: 1px solid rgb(5, 13, 129);
+  }
+  
+   button{
+    font-size: 18px;
+    color: #fff;
+    width: 100%;
+    background: rgb(5, 13, 129);; 
+    border: none;
+    transition: 0.3s ease;
+  }
+  
+  button:hover{
+    background: #BDBDBD;
+  }
+
+  .content{
+    flex-basis: 50%;
+    padding: 3em 3em;
+    background: #fff;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  
+
+
+  /*
+  .btn,
+  button,
+  input{
+    border-radius: 35px;
+  }
+  */
+  .btn:hover,
+  button:hover{
+    transition: 0.5s ease;
+  }
+  
+ 
