@@ -5,6 +5,7 @@ export class Cotizador{
       public ancho:number,
       public total:number,
       public peso:number,
-      public tarifa:number
+      public tarifa:number,
+      public totalD:number
       ){}
   }

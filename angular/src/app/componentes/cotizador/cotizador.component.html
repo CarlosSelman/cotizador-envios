@@ -32,7 +32,7 @@
                 <span class="input-group-text"><i class="bi bi-rulers"></i></span>
                 <input type="text" class="form-control" name="txtApellido" placeholder="Ancho" required >
             </div>
-        -->
+        --><label class="form-label"><strong>Medidas:</strong></label>
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-rulers"></i></span>
                 <input type="number" class="form-control" name="alto" #alto="ngModel" [(ngModel)]="cotizado.alto" placeholder="Alto"  autofocus required>
@@ -73,7 +73,7 @@
                     <option *ngFor="let reg of paises" [ngValue]="reg">{{reg.nombre}}</option>
                   </select>
               </div>
-
+              <label class="form-label"><strong>Totales:</strong></label>
             <div class="input-group">
                 <span class="input-group-text">Q</span>
                 <input type="number" class="form-control" name="total" #total="ngModel" [(ngModel)]="cotizado.total" placeholder="Total sin descuento"  autofocus disabled>

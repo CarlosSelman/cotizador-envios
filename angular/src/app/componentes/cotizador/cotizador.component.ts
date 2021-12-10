@@ -8,6 +8,7 @@ import { Descuento } from 'src/app/modelos/descuento.modelo';
 import { DescuentosService } from "../../servicios/descuentos.service";
 
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-cotizador',
@@ -31,7 +32,7 @@ export class CotizadorComponent implements OnInit {
     public _activatedRoute: ActivatedRoute,
     private _router: Router
   ) {
-    this.cotizado = new Cotizador(null,null,null,null,null,null);
+    this.cotizado = new Cotizador(null,null,null,null,null,null,null);
     this.idRegionModel = new Region("","","");
     this.idPaisModel = new Pais("","",{nombre:""},0);
   }
@@ -90,21 +91,54 @@ export class CotizadorComponent implements OnInit {
     this.cotizado.peso=null;
     this.cotizado.peso=null;
     this.cotizado.total=null;
+    this.cotizado.totalD=null;
+    Swal.fire({
+      icon: 'success',
+      title: 'Limpieza de campos exitosa',
+      showConfirmButton: false,
+      timer: 2500,
+    });
   }
 
   cotizar(){
     /*
       (peso*tarifa)+1.66*alto*largo*ancho-descuento*0.5*peso 
     */
-    //this.idPaisModel.tarifa === this.cotizado.tarifa;
-    let peso: number = this.cotizado.peso;
-    let tarifa: number = this.idPaisModel.tarifa;
-    let alto: number = this.cotizado.alto;
-    let ancho:number = this.cotizado.ancho;
-    let largo: number = this.cotizado.largo;
+      let peso: number = this.cotizado.peso;
+      let tarifa: number = this.idPaisModel.tarifa;
+      let alto: number = this.cotizado.alto;
+      let ancho:number = this.cotizado.ancho;
+      let largo: number = this.cotizado.largo;
+
+    if(
+      peso===0|| 
+      peso===null||
+      tarifa===0|| 
+      tarifa===null||
+      largo===0|| 
+      largo===null||
+      ancho===0|| 
+      ancho===null||
+      peso===0|| 
+      peso===null
+      ){
+      //Alerta para que se llenen todos los campos
+      Swal.fire({
+        icon: 'warning',
+        title: 'Llene todos los campos',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }else{
+    
     this.cotizado.total=(peso*tarifa)+1.66*alto*largo*ancho;
     console.log(this.cotizado.total);   
     console.log(tarifa);   
+    }
+  }
+
+  aplicarDescuento(){
+    
   }
 
   validar(){
