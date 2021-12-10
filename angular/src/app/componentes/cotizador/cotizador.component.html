@@ -70,7 +70,7 @@
                 <label class="form-label"><strong>Escoja el País:</strong></label>
                   <select  name="idPais" #idPais="ngModel"
                   [(ngModel)]="idPaisModel" class="form-select" aria-label="Default select example">
-                    <option *ngFor="let reg of paises" [ngValue]="reg">{{reg.nombre}}</option>
+                    <option *ngFor="let reg of paisesModelGet" [ngValue]="reg">{{reg.nombre}}</option>
                   </select>
               </div>
               <label class="form-label"><strong>Totales:</strong></label>

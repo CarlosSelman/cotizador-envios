@@ -47,7 +47,7 @@ export class CotizadorComponent implements OnInit {
 
   obtenerPaisesRegion(idRegion) {
     this._paisService.obtenerPaisesRegion(idRegion).subscribe((response) => {
-      this.paisesModelGet = response.paisesObtenidas;
+      this.paisesModelGet = response.paisesObtenidos;
       console.log(response);
     });
   }
@@ -130,10 +130,15 @@ export class CotizadorComponent implements OnInit {
         timer: 1500,
       });
     }else{
-    
     this.cotizado.total=(peso*tarifa)+1.66*alto*largo*ancho;
     console.log(this.cotizado.total);   
-    console.log(tarifa);   
+    console.log(tarifa);  
+      Swal.fire({
+        icon: 'success',
+        title: 'Cotización realizada exitosamente',
+        showConfirmButton: false,
+        timer: 2500,
+      }); 
     }
   }
 
