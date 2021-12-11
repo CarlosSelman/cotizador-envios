@@ -105,7 +105,42 @@ export class CotizadorComponent implements OnInit {
     );
   }
 
-  validar(){} 
+  validar(){
+      if(
+        this.idDescuentoModel.codigo==="" || this.idDescuentoModel.codigo===null){
+        Swal.fire({
+          icon: 'warning',
+          title: 'Ingrese el código del cupón',
+          text: 'Se necesita para verificar el mismo.',
+          showConfirmButton: false,
+          timer: 3500,
+        });
+      }else{
+     //console.log(this.idDescuentoModel.codigo)
+     this._descuentoService.validar(this.idDescuentoModel).subscribe(
+      response=>{
+        console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: 'Descuento encontrado!',
+          text: 'Se aplicará el descuento al mostrar el total',
+          showConfirmButton: false,
+          timer: 3500,
+        });
+      },
+      (error) => {
+        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'No se pudo encontrar el cupón de descuento',
+          text: 'Pueda ser que no exista el cupón',
+          showConfirmButton: false,
+          timer: 3500,
+        });
+      },
+      )
+    }   
+  }
   
   limpiar(){
     //Limpiando todos los campos
@@ -164,5 +199,4 @@ export class CotizadorComponent implements OnInit {
       }); 
     }
   }
-
 }

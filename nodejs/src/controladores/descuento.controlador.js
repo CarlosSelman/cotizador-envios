@@ -2,6 +2,7 @@
 
 const descuentoModelo = require("../modelos/descuento.modelo");
 const Descuento = require("../modelos/descuento.modelo");
+const bcrypt = require("bcrypt-nodejs");
 
 function obtenerDescuentos(req,res){
 
@@ -101,6 +102,25 @@ function eliminarDescuento(req, res) {
 }
 
 
+
+function validar(req,res){
+    var params = req.body;
+        
+    descuentoModelo.findOne({ codigo : params.codigo}, (err, descuentoEncontrado)=>{
+        if(err) return res.status(404).send({ report: 'Error  al validar cupón'});
+        if(!descuentoEncontrado) return res.status(404).send({ report: 'El cupón no existe'});
+
+       if(descuentoEncontrado){
+           if(params.codigo === descuentoEncontrado.codigo){
+            
+            return res.status(200).send({ descuentoEncontrado });
+           } else{
+            return res.status(500).send({ mensaje: 'Cupón no válido' });
+           }
+       }
+    })
+}
+
 module.exports = {
     obtenerDescuentos,
     crearDescuento,
@@ -108,5 +128,6 @@ module.exports = {
     editarDescuento,
     eliminarDescuento,
     obtenerDescuentosT,
-    obtenerDescuentoC
+    obtenerDescuentoC,
+    validar
 }

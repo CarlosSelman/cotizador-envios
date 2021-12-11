@@ -48,7 +48,7 @@
     <label class="form-label"><strong>Cupón de descuento:</strong></label>
     <div class="input-group mb-3">
       <span class="input-group-text"><i class="bi bi-ticket"></i></span>
-      <input type="string" class="form-control" name="cupon" #peso="ngModel" [(ngModel)]="idDescuentoModel.codigo" placeholder="Cupón de descuento"  autofocus required>
+      <input type="string" class="form-control" name="cupon" #cupon="ngModel" [(ngModel)]="idDescuentoModel.codigo" placeholder="Cupón de descuento"  autofocus required>
       <span style="background-color:green; color:white;"class="input-group-text" (click)="validar()"><i class="bi bi-check-lg"></i></span>
     </div>
     <div id="emailHelp" class="form-text"><i class="bi bi-exclamation-circle-fill"></i> El cupón puede generar un descuento.</div>

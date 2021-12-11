@@ -7,6 +7,7 @@ const DescuentoControlador = require("../controladores/descuento.controlador");
 // RUTES
 var api = express.Router();
 
+    api.post('/validar', DescuentoControlador.validar);
     api.get('/obtenerDescuentos', DescuentoControlador.obtenerDescuentos);
     api.get('/obtenerDescuentosT', DescuentoControlador.obtenerDescuentosT);
     api.post('/crearDescuento',  DescuentoControlador.crearDescuento);

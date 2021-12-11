@@ -15,6 +15,11 @@ export class DescuentosService {
     this.url = GLOBAL.url;
   }
 
+  validar(descuento:Descuento): Observable<any>{
+    let params = JSON.stringify(descuento);
+    return this._http.post(this.url + '/validar', params, {headers: this.headersVariable});
+  }
+
   crearDescuento(descuento: Descuento):Observable<any>{
     let params = JSON.stringify(descuento);
 
