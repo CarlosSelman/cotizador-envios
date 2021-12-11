@@ -106,6 +106,11 @@ export class CotizadorComponent implements OnInit {
   }
 
   validar(){
+    let peso: number = this.cotizado.peso;
+    let tarifa: number = this.idPaisModel.tarifa;
+    let alto: number = this.cotizado.alto;
+    let ancho:number = this.cotizado.ancho;
+    let largo: number = this.cotizado.largo;
       if(
         this.idDescuentoModel.codigo==="" || this.idDescuentoModel.codigo===null){
         Swal.fire({
@@ -120,6 +125,10 @@ export class CotizadorComponent implements OnInit {
      this._descuentoService.validar(this.idDescuentoModel).subscribe(
       response=>{
         console.log(response);
+        console.log(response.descuentoEncontrado.codigo);
+        console.log(response.descuentoEncontrado.descuento);
+
+        this.cotizado.total = (peso*tarifa)+1.66*alto*largo*ancho-response.descuentoEncontrado.descuento*0.5*peso;
         Swal.fire({
           icon: 'success',
           title: 'Descuento encontrado!',
@@ -163,7 +172,7 @@ export class CotizadorComponent implements OnInit {
   }
 
   cotizar(){
-      let descuento: number = this.idDescuentoModel.descuento;
+      //let descuento: number = this.idDescuentoModel.descuento;
       let peso: number = this.cotizado.peso;
       let tarifa: number = this.idPaisModel.tarifa;
       let alto: number = this.cotizado.alto;
@@ -185,7 +194,7 @@ export class CotizadorComponent implements OnInit {
       });
     }else{
     //Realizando la cotización
-    this.cotizado.total=(peso*tarifa)+1.66*alto*largo*ancho-descuento*0.5*peso;
+    this.cotizado.total=(peso*tarifa)+1.66*alto*largo*ancho;
     //Mostrando en consola el total
     console.log(this.cotizado.total);   
     //Mostrando en consola la tarifa utilizada en el país seleccionado
