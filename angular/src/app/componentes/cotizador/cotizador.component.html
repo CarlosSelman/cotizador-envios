@@ -49,6 +49,7 @@
     <div class="input-group mb-3">
       <span class="input-group-text"><i class="bi bi-ticket"></i></span>
       <input type="string" class="form-control" name="cupon" #peso="ngModel" [(ngModel)]="idDescuentoModel.codigo" placeholder="Cupón de descuento"  autofocus required>
+      <span style="background-color:green; color:white;"class="input-group-text" (click)="validar()"><i class="bi bi-check-lg"></i></span>
     </div>
     <div id="emailHelp" class="form-text"><i class="bi bi-exclamation-circle-fill"></i> El cupón puede generar un descuento.</div>
     <div id="emailHelp" class="form-text"><strong><i class="bi bi-question-circle-fill"></i> Si no cuenta con un cupón de descuento no hay problema, puede seguir con la cotización.</strong></div>
@@ -62,7 +63,6 @@
     <div class="d-grid">
       <hr>
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary">Validar</button>
         <button type="button" class="btn btn-primary" (click)="cotizar()">Cotizar</button>
         <button type="button" class="btn btn-primary" (click)="limpiar()">Limpiar</button>
       </div>

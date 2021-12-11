@@ -87,6 +87,8 @@ export class CotizadorComponent implements OnInit {
       response => {
         this.idDescuentoModel =response.descuentoEncontrado;
         console.log(response);
+        //console.log(this.idDescuentoModel)
+        console.log(response.descuentoEncontrado.descuento)
       }
     )
   }
@@ -103,7 +105,8 @@ export class CotizadorComponent implements OnInit {
     );
   }
 
-
+  validar(){} 
+  
   limpiar(){
     //Limpiando todos los campos
     this.cotizado.alto=null;
@@ -160,14 +163,6 @@ export class CotizadorComponent implements OnInit {
         timer: 2500,
       }); 
     }
-  }
-
-  aplicarDescuento(){
-    
-  }
-
-  validar(){
-
   }
 
 }
