@@ -7,7 +7,6 @@
   <meta name="keywords" content="">
 </head>
 <body>
-   <!-- Sección de la explicación de Usuarios -->
  <div style=" border-radius: 0;"class="card text-center">
     <div style="
       background: #000428;
@@ -16,79 +15,59 @@
     class="card-body">
       <h5 style="color:white"class="card-title">Cotizador</h5>
       <p style="color:white" class="card-text">Ingrese la información que se le solicita a continuación para poder cotizar.</p>
+      <i style="color:white;"[routerLink]="['/cotizador-regiones']" class="bi bi-arrow-left-circle"> Regresar</i>
     </div>
   </div>
-<!-- Peso Alto Ancho destino tarifa cupon -->
-<!--
-    (peso*tarifa)+1.66*alto*largo*ancho-descuento*0.5*peso  
--->
-<br>
+  <br>
+  <div class="container">
+    <br>
+    <label class="form-label"><strong>Medidas:</strong></label>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="bi bi-rulers"></i></span>
+        <input type="number" class="form-control" name="alto" #alto="ngModel" [(ngModel)]="cotizado.alto" placeholder="Alto"  autofocus required>
+        <input type="number" class="form-control" name="largo" #largo="ngModel" [(ngModel)]="cotizado.largo"  placeholder="Largo"  autofocus required>
+        <input type="number" class="form-control" name="ancho" #ancho="ngModel" [(ngModel)]="cotizado.ancho" placeholder="Ancho"  autofocus required>
+      <span class="input-group-text">cms.</span>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
+        <input type="number" class="form-control" name="peso" #peso="ngModel" [(ngModel)]="cotizado.peso" placeholder="Peso"  autofocus required>
+      <span class="input-group-text">lbs.</span>
+    </div>
+    <hr>
+    <div class="mb-3">
+      <label class="form-label"><strong>País de Destino:</strong></label>
+        <select  name="idPais" #idPais="ngModel"
+          [(ngModel)]="idPaisModel" class="form-select" aria-label="Default select example">
+          <option *ngFor="let reg of paisesModelGet" [ngValue]="reg">{{reg.nombre}}</option>
+        </select>
+      <div id="emailHelp" class="form-text"><i class="bi bi-exclamation-circle-fill"></i> Cada país cuenta con su respectiva tarifa.</div>
+      <div id="emailHelp" class="form-text"><strong><i class="bi bi-question-circle-fill"></i> Si no aparece algún país en esta región es porque no hay países registrados disponibles.</strong></div>
+    </div>
+    <hr>
+    <label class="form-label"><strong>Cupón de descuento:</strong></label>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="bi bi-ticket"></i></span>
+      <input type="string" class="form-control" name="cupon" #peso="ngModel" [(ngModel)]="idDescuentoModel.codigo" placeholder="Cupón de descuento"  autofocus required>
+    </div>
+    <div id="emailHelp" class="form-text"><i class="bi bi-exclamation-circle-fill"></i> El cupón puede generar un descuento.</div>
+    <div id="emailHelp" class="form-text"><strong><i class="bi bi-question-circle-fill"></i> Si no cuenta con un cupón de descuento no hay problema, puede seguir con la cotización.</strong></div>
 
-<div class="container">
-        <br>
-        <!-- 
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Alto" required>
-                <span class="input-group-text"><i class="bi bi-rulers"></i></span>
-                <input type="text" class="form-control" name="txtApellido" placeholder="Ancho" required >
-            </div>
-        --><label class="form-label"><strong>Medidas:</strong></label>
-            <div class="input-group mb-3">
-                <span class="input-group-text"><i class="bi bi-rulers"></i></span>
-                <input type="number" class="form-control" name="alto" #alto="ngModel" [(ngModel)]="cotizado.alto" placeholder="Alto"  autofocus required>
-                <input type="number" class="form-control" name="largo" #largo="ngModel" [(ngModel)]="cotizado.largo"  placeholder="Largo"  autofocus required>
-                <input type="number" class="form-control" name="ancho" #ancho="ngModel" [(ngModel)]="cotizado.ancho" placeholder="Ancho"  autofocus required>
-                <span class="input-group-text">cms.</span>
-            </div>
-
-            <div class="input-group mb-3">
-                <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
-                <input type="number" class="form-control" name="peso" #peso="ngModel" [(ngModel)]="cotizado.peso" placeholder="Peso"  autofocus required>
-                <span class="input-group-text">lbs.</span>
-            </div>
-
-           <!-- 
-                <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-gender-female"></i><i class="bi bi-gender-male"></i></span>
-                <input type="text" class="form-control" name="txtGenero" placeholder="Género"  autofocus required>
-            </div>
-
-            <div class="input-group mb-3">
-                <input type="email" class="form-control" name="txtMail" placeholder="E-Mail" autofocus required>
-                <span class="input-group-text" id="basic-addon2"><i class="bi bi-envelope-check-fill"></i></span>
-            </div>
-
-            <div class="input-group mb-3">
-                <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                <input type="text" class="form-control" name="txtTel" placeholder="No. Telefónico" autofocus required>
-            </div>
-           -->
-           
-           
-
-            <div class="mb-3">
-                <label class="form-label"><strong>Escoja el País:</strong></label>
-                  <select  name="idPais" #idPais="ngModel"
-                  [(ngModel)]="idPaisModel" class="form-select" aria-label="Default select example">
-                    <option *ngFor="let reg of paisesModelGet" [ngValue]="reg">{{reg.nombre}}</option>
-                  </select>
-              </div>
-              <label class="form-label"><strong>Totales:</strong></label>
-            <div class="input-group">
-                <span class="input-group-text">Q</span>
-                <input type="number" class="form-control" name="total" #total="ngModel" [(ngModel)]="cotizado.total" placeholder="Total sin descuento"  autofocus disabled>
-            </div>
-        
-            <div class="d-grid">
-                <hr>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-primary">Validar</button>
-                    <button type="button" class="btn btn-primary" (click)="cotizar()">Cotizar</button>
-                    <button type="button" class="btn btn-primary" (click)="limpiar()">Limpiar</button>
-                </div>
-            </div>
-        
-        <br>
-</div>
+    <hr>
+    <label class="form-label"><strong>Totales:</strong></label>
+      <div class="input-group">
+        <span class="input-group-text">Q</span>
+        <input type="number" class="form-control" name="total" #total="ngModel" [(ngModel)]="cotizado.total" placeholder="Total de la cotización"  autofocus disabled>
+      </div> 
+    <div class="d-grid">
+      <hr>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary">Validar</button>
+        <button type="button" class="btn btn-primary" (click)="cotizar()">Cotizar</button>
+        <button type="button" class="btn btn-primary" (click)="limpiar()">Limpiar</button>
+      </div>
+    </div>      
+    <br>
+  </div>
 </body>
 </html>

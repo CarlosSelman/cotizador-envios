@@ -13,7 +13,8 @@ import Swal from "sweetalert2";
 @Component({
   selector: 'app-cotizador',
   templateUrl: './cotizador.component.html',
-  styleUrls: ['./cotizador.component.css']
+  styleUrls: ['./cotizador.component.css'],
+  providers: [DescuentosService,RegionesService,PaisesService]
 })
 export class CotizadorComponent implements OnInit {
   
@@ -24,6 +25,7 @@ export class CotizadorComponent implements OnInit {
   public paisesModelGet;
   public idRegionModel: Region;
   public idPaisModel: Pais;
+  public idDescuentoModel: Descuento;
   
   constructor(
     public _paisService: PaisesService,
@@ -35,6 +37,7 @@ export class CotizadorComponent implements OnInit {
     this.cotizado = new Cotizador(null,null,null,null,null,null,null);
     this.idRegionModel = new Region("","","");
     this.idPaisModel = new Pais("","",{nombre:""},0);
+    this.idDescuentoModel = new Descuento("","",0);
   }
 
   ngOnInit(): void {
@@ -70,6 +73,23 @@ export class CotizadorComponent implements OnInit {
     )
   }
 
+  obtenerDescuento(idDescuento){
+    this._descuentoService.obtenerDescuento(idDescuento).subscribe(
+      response => {
+        this.idDescuentoModel =response.descuentoEncontrado;
+        console.log(response);
+      }
+    )
+  }
+
+  obtenerDescuentoC(codigo){
+    this._descuentoService.obtenerDescuentoC(codigo).subscribe(
+      response => {
+        this.idDescuentoModel =response.descuentoEncontrado;
+        console.log(response);
+      }
+    )
+  }
   
   obtenerPaises() {
     this._paisService.obtenerPaises().subscribe(
@@ -85,6 +105,7 @@ export class CotizadorComponent implements OnInit {
 
 
   limpiar(){
+    //Limpiando todos los campos
     this.cotizado.alto=null;
     this.cotizado.ancho=null;
     this.cotizado.largo=null;
@@ -92,6 +113,9 @@ export class CotizadorComponent implements OnInit {
     this.cotizado.peso=null;
     this.cotizado.total=null;
     this.cotizado.totalD=null;
+    this.idPaisModel.nombre=null;
+    this.idDescuentoModel.codigo=null;
+    //Mostrando alerta de la limpieza
     Swal.fire({
       icon: 'success',
       title: 'Limpieza de campos exitosa',
@@ -101,26 +125,18 @@ export class CotizadorComponent implements OnInit {
   }
 
   cotizar(){
-    /*
-      (peso*tarifa)+1.66*alto*largo*ancho-descuento*0.5*peso 
-    */
+      let descuento: number = this.idDescuentoModel.descuento;
       let peso: number = this.cotizado.peso;
       let tarifa: number = this.idPaisModel.tarifa;
       let alto: number = this.cotizado.alto;
       let ancho:number = this.cotizado.ancho;
       let largo: number = this.cotizado.largo;
-
     if(
-      peso===0|| 
-      peso===null||
-      tarifa===0|| 
-      tarifa===null||
-      largo===0|| 
-      largo===null||
-      ancho===0|| 
-      ancho===null||
-      peso===0|| 
-      peso===null
+      peso===0|| peso===null||
+      tarifa===0|| tarifa===null||
+      largo===0|| largo===null||
+      ancho===0|| ancho===null||
+      peso===0|| peso===null
       ){
       //Alerta para que se llenen todos los campos
       Swal.fire({
@@ -130,9 +146,13 @@ export class CotizadorComponent implements OnInit {
         timer: 1500,
       });
     }else{
-    this.cotizado.total=(peso*tarifa)+1.66*alto*largo*ancho;
+    //Realizando la cotización
+    this.cotizado.total=(peso*tarifa)+1.66*alto*largo*ancho-descuento*0.5*peso;
+    //Mostrando en consola el total
     console.log(this.cotizado.total);   
+    //Mostrando en consola la tarifa utilizada en el país seleccionado
     console.log(tarifa);  
+    //Mostrando alerta de la cotización
       Swal.fire({
         icon: 'success',
         title: 'Cotización realizada exitosamente',

@@ -33,6 +33,10 @@ export class DescuentosService {
     return this._http.get(this.url + '/obtenerDescuento/'+ id, {headers: this.headersVariable})
   }
 
+  obtenerDescuentoC(codigo:String): Observable<any>{
+    return this._http.get(this.url + '/obtenerDescuento/'+ codigo, {headers: this.headersVariable})
+  }
+
   editarDescuento(descuento: Descuento):Observable<any>{
     let params = JSON.stringify(descuento);
 
