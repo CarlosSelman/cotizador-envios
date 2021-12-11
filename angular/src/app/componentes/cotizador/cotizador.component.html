@@ -21,6 +21,24 @@
   <br>
   <div class="container">
     <br>
+    <div class="card">
+      <div class="card-header">
+        <strong>Pasos para la cotización:</strong>
+      </div>
+      <div class="card-body">
+          <h6><i class="bi bi-check2-circle"></i> Paso #1:</h6>
+          <p> <i class="bi bi-check-lg"></i> Llenar los campos de medidas (Alto, Largo, Ancho y Peso), teniendo en cuenta que el peso está considerado en libras y las demás en centímetros.</p>
+          <h6><i class="bi bi-check2-circle"></i> Paso #2:</h6>
+          <p> <i class="bi bi-check-lg"></i> Seleccionar un país, ya que es importante tener en cuenta que cada país cuenta con una tarifa, por lo cual es fundamental la selección del mismo.</p>
+          <h6><i class="bi bi-check2-circle"></i> Paso #3:</h6>
+          <p> <i class="bi bi-check-lg"></i> Presionar el botón de "Cotizar", ya que así se realizará la correspondiente cotización.</p>
+          <h6><i class="bi bi-check2-circle"></i> Paso #4:</h6>
+          <p> <i class="bi bi-check-lg"></i> Si se cuenta con un cupón de descuento colocarlo en el apartado del cupón de descuento, y para validarlo y aplicar el descuento al total previamente cotizado hay que presionar el ícono verde que se encuentra junto a donde se coloca el código. Es importante mencionar que si el cupón no es válido no se realizará ningún descuento, sino que el monto será lo cotizado con anterioridad.</p>
+          <h6><i class="bi bi-check2-circle"></i> Paso #5:</h6>
+          <p> <i class="bi bi-check-lg"></i> Presionar el botón de "Limpiar", para que todos los campos queden limpios para una futura cotización.</p>
+      </div>
+    </div>
+    <hr>
     <label class="form-label"><strong>Medidas:</strong></label>
     <div class="input-group mb-3">
       <span class="input-group-text"><i class="bi bi-rulers"></i></span>
@@ -55,7 +73,7 @@
     <div id="emailHelp" class="form-text"><strong><i class="bi bi-question-circle-fill"></i> Si no cuenta con un cupón de descuento no hay problema, puede seguir con la cotización.</strong></div>
 
     <hr>
-    <label class="form-label"><strong>Totales:</strong></label>
+    <label class="form-label"><strong>Total (Q):</strong></label>
       <div class="input-group">
         <span class="input-group-text">Q</span>
         <input type="number" class="form-control" name="total" #total="ngModel" [(ngModel)]="cotizado.total" placeholder="Total de la cotización"  autofocus disabled>
